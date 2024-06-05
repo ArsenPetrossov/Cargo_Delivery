@@ -12,12 +12,12 @@ public class BoxController : MonoBehaviour
 
     private void Start()
     {
-        _ropeController.DropBox += DropDown;
+        _ropeController.RopeOverFinish += DropDown;
     }
 
     private void OnDestroy()
     {
-        _ropeController.DropBox -= DropDown;
+        _ropeController.RopeOverFinish -= DropDown;
     }
 
     private void Awake()

@@ -9,22 +9,22 @@ public class GameController : MonoBehaviour
 
     private void Start()
     {
-        _drawBehavior.MoveRope += OnMoveRope;
-        _ropeController.DropBox += OnDropBox;
+        _drawBehavior.DrawingFinished += OnDrawingFinished;
+        _ropeController.RopeOverFinish += OnRopeOverFinish;
     }
 
     private void OnDestroy()
     {
-        _drawBehavior.MoveRope -= OnMoveRope;
-        _ropeController.DropBox -= OnDropBox;
+        _drawBehavior.DrawingFinished -= OnDrawingFinished;
+        _ropeController.RopeOverFinish -= OnRopeOverFinish;
     }
 
-    private void OnMoveRope(List<Vector3> positions)
+    private void OnDrawingFinished(List<Vector3> positions)
     {
         _ropeController.StartMovingRope(positions);
     }
 
-    private void OnDropBox(Vector3 position)
+    private void OnRopeOverFinish(Vector3 position)
     {
         _boxController.DropDown(position);
     }

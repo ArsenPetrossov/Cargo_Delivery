@@ -6,11 +6,11 @@ public class DrawBehavior : MonoBehaviour
 {
     [SerializeField] private Transform _ropePosition;
 
-    private bool onDrawingEnd;
+    private bool _onDrawingEnd;
     private LineRenderer _lineRenderer;
     private List<Vector3> _drawPositions;
 
-    public event Action<List<Vector3>> MoveRope;
+    public event Action<List<Vector3>> DrawingFinished;
 
     void Start()
     {
@@ -21,7 +21,7 @@ public class DrawBehavior : MonoBehaviour
 
     void Update()
     {
-        if (onDrawingEnd)
+        if (_onDrawingEnd) 
         {
             return;
         }
@@ -34,8 +34,8 @@ public class DrawBehavior : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            onDrawingEnd = true;
-            MoveRope?.Invoke(_drawPositions);
+            _onDrawingEnd = true;
+            DrawingFinished?.Invoke(_drawPositions);
         }
     }
 

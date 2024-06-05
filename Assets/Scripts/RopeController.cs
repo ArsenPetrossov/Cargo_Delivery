@@ -7,7 +7,7 @@ public class RopeController : MonoBehaviour
 {
     [SerializeField] private Transform _finishPoint;
 
-    public event Action<Vector3> DropBox;
+    public event Action<Vector3> RopeOverFinish;
     private float _speed = 4;
     private Coroutine _coroutine;
 
@@ -16,7 +16,7 @@ public class RopeController : MonoBehaviour
         if (IsNearFinishPoint())
         {
             StopCoroutine(_coroutine);
-            DropBox?.Invoke(_finishPoint.position);
+            RopeOverFinish?.Invoke(_finishPoint.position);
         }
     }
 
